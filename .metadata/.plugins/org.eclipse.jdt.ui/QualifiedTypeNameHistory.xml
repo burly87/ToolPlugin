@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javafx.stage.Stage"/>
+<fullyQualifiedTypeName name="javafx.application.Application"/>
+<fullyQualifiedTypeName name="javafx.scene.Scene"/>
+<fullyQualifiedTypeName name="javafx.scene.layout.Pane"/>
+<fullyQualifiedTypeName name="javafx.scene.layout.GridPane"/>
+<fullyQualifiedTypeName name="javafx.scene.layout.HBox"/>
+<fullyQualifiedTypeName name="javafx.scene.control.Button"/>
+<fullyQualifiedTypeName name="javafx.scene.layout.TilePane"/>
+<fullyQualifiedTypeName name="com.sun.prism.Image"/>
+<fullyQualifiedTypeName name="javafx.scene.image.Image"/>
+<fullyQualifiedTypeName name="javafx.scene.image.ImageView"/>
+<fullyQualifiedTypeName name="javafx.scene.layout.VBox"/>
+<fullyQualifiedTypeName name="javafx.scene.control.Menu"/>
+<fullyQualifiedTypeName name="javafx.scene.control.MenuBar"/>
+<fullyQualifiedTypeName name="javafx.scene.control.MenuItem"/>
+<fullyQualifiedTypeName name="com.sun.prism.Texture"/>
+<fullyQualifiedTypeName name="javafx.scene.layout.Region"/>
+<fullyQualifiedTypeName name="javafx.scene.layout.ColumnConstraints"/>
+<fullyQualifiedTypeName name="javafx.scene.layout.Priority"/>
+<fullyQualifiedTypeName name="javafx.scene.control.Label"/>
+</qualifiedTypeNameHistroy>
