@@ -1,0 +1,22 @@
+package Editor;
+
+import javafx.scene.layout.Pane;
+
+public class Editor   
+{
+	private Pane root;
+	
+	
+	public Editor()
+	{
+		
+	}
+
+	public Pane init()
+	{
+		
+		
+		return root;
+	}
+	
+}

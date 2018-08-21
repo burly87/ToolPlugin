@@ -6,17 +6,15 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 
 public class View 
 {	
 	private GridPane root;
-	private GridPane grid;
+	private GridPane cellGrid;
+	private Pane tileGrid;
 	private VBox rightBox, tileBox;
 
 	// Menuebar
@@ -29,10 +27,22 @@ public class View
 	//Grid
 	private Image gridTile0;
 	//Grid Scaling
-	private int gridX = 30; // width of grid 
-	private int gridY = 20; // height of grid
+	public static int TILE_SIZE = 40;
+	private int W = 800;
+	private int H = 600;
+	
+	private int X_TILES = W / TILE_SIZE;
+	private int Y_TILES = H / TILE_SIZE;
+	private Tile[][] grid = new Tile[X_TILES][Y_TILES];
+	
+	//old
+	//private int gridX = 5; // width of grid 
+	//private int gridY = 3; // height of grid
+	//private int cellX = (gridX*2)+1;
+	//private int cellY = (gridY*2)+1;
 	//Grid Cells
-	public int gridCells[][] = new int[gridX][gridY];
+//	public int gridTiles[][] = new int[gridX][gridY]; // tileCells for image
+//	public int gridCells[][] = new int[cellX][cellY]; //smaller Grid laying behind
 	
 	public View() {
 	}
@@ -42,9 +52,12 @@ public class View
 		// Panes
 		root = new GridPane();
 		root.setHgap(15.0);
-		grid = new GridPane();
+		tileGrid = new Pane();
+		tileGrid.setPrefSize(W, H);
+		cellGrid = new GridPane();
 		rightBox = new VBox(25.0);
 		tileBox = new VBox(5.0);
+		
 		
 		/* MenueBar top */
 		menuBar = new MenuBar();
@@ -72,11 +85,11 @@ public class View
 			tileBox.getChildren().add(ivMenue);
 		}
 		
-		fillGrid();
+		generateGrid();
 	
 		/* Sort everything */
 		root.add(menuBar, 0, 0);
-		root.add(grid, 0, 1);
+		root.add(tileGrid, 0, 1);
 		root.add(rightBox, 1, 1);
 
 		return root;
@@ -87,26 +100,36 @@ public class View
 		return null;
 	}
 	
-	public void fillGrid()
+	public void generateGrid()
 	{
 		/* Grid to the Left */
+		
 		// Images
 		gridTile0 = new Image("Editor/Tiles/placeholder.gif");
 		int cellNumber = 0;
 	
-		for (int y = 0; y < gridY; y++) //row
-		{
-		
-			for (int x =0; x < gridX; x++) //column
+		for (int y = 0; y < Y_TILES; y++) //row
+		{		
+			for (int x = 0; x < X_TILES; x++) //column
 			{
-//				Label tmp = new Label(""+cellNumber);
 				ImageView iv = new ImageView();
 				iv.setImage(gridTile0);
-				grid.add(iv,x,y);
-				
-				gridCells[x][y] = cellNumber++;
+				Tile tile = new Tile(x,y,iv);
+				tileGrid.getChildren().add(tile);
 			}
-		}		
+		}
+//		
+//		//Cells for Numbers
+//		for (int y = 0; y < cellY; y++)
+//		{
+//			for (int x = 0; x < cellX; x++)
+//			{
+//				Label tmp = new Label(" "+cellNumber);
+//				cellGrid.add(tmp, x, y);
+//				gridCells[x][y] = cellNumber++;
+//				
+//			}
+//		}
 
 	}
 

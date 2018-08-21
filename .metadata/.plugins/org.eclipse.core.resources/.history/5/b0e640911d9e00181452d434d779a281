@@ -1,0 +1,70 @@
+package Editor;
+
+import javafx.scene.Parent;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
+
+public class Editor   
+{
+	private Pane root;
+	
+	private static int TILE_SIZE = 40;
+	private static int W = 800;
+	private static int H = 600;
+	
+	private static int X_TILES = W/TILE_SIZE;
+	private static int Y_TILES = H/TILE_SIZE;
+	
+	private Tile[][] grid = new Tile[X_TILES][Y_TILES];
+	
+	private Image image; 
+	
+	
+	public Editor()
+	{
+			
+	}
+
+	public Pane init()
+	{
+		root = new Pane();
+		
+		root.setPrefSize(W, H);
+		
+		for(int y = 0; y < Y_TILES; y++ )
+		{
+			for(int x = 0; x < X_TILES; x++)
+			{
+				Tile tile = new Tile(x,y);
+			}
+		}
+		
+		return root;
+	}
+	
+	
+	private class Tile extends StackPane
+	{
+		private int x, y;
+		private Image img;
+			
+		private Text text = new Text();
+		
+		public Tile(int x, int y, Image img)
+		{
+			this.x = x;
+			this.y = y;
+			this.img = img;
+			
+			text.setText("Test");
+			
+			getChildren().add(text);
+			
+		}
+		
+		
+	}
+	
+}

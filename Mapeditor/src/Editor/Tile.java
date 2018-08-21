@@ -1,18 +1,28 @@
 package Editor;
 
-import javafx.scene.layout.Region;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 
-public class Tile extends Region {
-
-	private float x, y, width, height;
+public class Tile extends StackPane
+{
+	View view = new View();
 	
-	public Tile(float x, float y, float width, float height)
+	private int x, y;
+	private ImageView img;
+	
+	public Tile(int x, int y, ImageView img)
 	{
 		this.x = x;
 		this.y = y;
-		this.width = width;
-		this.height = height;
+		this.img = img;
+		
+		setTranslateX(x * view.TILE_SIZE);
+		setTranslateY(y * view.TILE_SIZE);
 	}
+	
+	
+	
+	
 	
 	
 }

@@ -10,9 +10,11 @@ public class Main extends Application{
 	public void start(Stage stage) throws Exception {
 	
 		View view = new View();
+		Editor editor = new Editor();
 		//Model model = new Model();
 		
 		Scene scene = new Scene(view.initView());
+		//Scene scene = new Scene(editor.init());
 		stage.setScene(scene);
 		stage.setTitle("Wang Tile - Mapeditor");
 		stage.show();

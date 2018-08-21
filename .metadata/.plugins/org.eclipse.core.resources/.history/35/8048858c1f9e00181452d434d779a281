@@ -1,0 +1,28 @@
+package Editor;
+
+import javafx.scene.image.Image;
+import javafx.scene.layout.StackPane;
+
+public class Tile extends StackPane
+{
+	View view = new View();
+	
+	private int x, y;
+	private Image img;
+	
+	public Tile(int x, int y, Image img)
+	{
+		this.x = x;
+		this.y = y;
+		this.img = img;
+		
+		setTranslateX(x * view.TILE_SIZE);
+		setTranslateY(y * view.TILE_SIZE);
+	}
+	
+	
+	
+	
+	
+	
+}

@@ -1,0 +1,23 @@
+package Editor;
+
+import javafx.scene.image.Image;
+import javafx.scene.layout.Region;
+
+public class Tile {
+
+	private float x, y;
+	private Image img;
+	
+	public Tile(float x, float y, Image img)
+	{
+		this.x = x;
+		this.y = y;
+		this.img = img;
+	}
+	
+	
+	
+	
+	
+	
+}

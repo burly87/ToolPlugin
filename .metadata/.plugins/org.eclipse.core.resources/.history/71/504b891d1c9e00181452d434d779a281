@@ -1,0 +1,17 @@
+package Editor;
+
+
+public class Editor   
+{
+	
+	public Editor()
+	{
+		
+	}
+
+	public Pane init()
+	{
+		
+	}
+	
+}

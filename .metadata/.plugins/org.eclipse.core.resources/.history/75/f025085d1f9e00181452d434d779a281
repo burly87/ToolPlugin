@@ -1,0 +1,132 @@
+package Editor;
+
+import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+
+public class View 
+{	
+	private GridPane root;
+	private GridPane tileGrid,cellGrid;
+	private VBox rightBox, tileBox;
+
+	// Menuebar
+	private MenuBar menuBar;
+	private Menu file;
+	private MenuItem save, exit;
+	//SideMenue
+	private Label menuTitle;
+	
+	//Grid
+	private Image gridTile0;
+	//Grid Scaling
+	public static int TILE_SIZE;
+	private int W = 800;
+	private int H = 600;
+	
+	private int X_TILES = W / TILE_SIZE;
+	private int Y_TILES = H / TILE_SIZE;
+	private Tile[][] grid = new Tile[X_TILES][Y_TILES];
+	
+	//old
+	private int gridX = 5; // width of grid 
+	private int gridY = 3; // height of grid
+	private int cellX = (gridX*2)+1;
+	private int cellY = (gridY*2)+1;
+	//Grid Cells
+	public int gridTiles[][] = new int[gridX][gridY]; // tileCells for image
+	public int gridCells[][] = new int[cellX][cellY]; //smaller Grid laying behind
+	
+	public View() {
+	}
+
+	public Pane initView() {
+		/* Initialize */
+		// Panes
+		root = new GridPane();
+		root.setHgap(15.0);
+		tileGrid = new GridPane();
+		cellGrid = new GridPane();
+		rightBox = new VBox(25.0);
+		tileBox = new VBox(5.0);
+		
+		/* MenueBar top */
+		menuBar = new MenuBar();
+		file = new Menu("File");		
+		save = new MenuItem("Save");
+		save.setOnAction(e->saveMap()); // add Method
+		
+		exit = new MenuItem("Exit");
+		exit.setOnAction(e->System.exit(0));
+		
+		file.getItems().addAll(save, exit);
+		menuBar.getMenus().add(file);
+		
+		/* Menu on the right*/		
+		menuTitle = new Label("Tilemenue to draw with         ");
+		rightBox.getChildren().add(menuTitle);
+		rightBox.getChildren().add(tileBox);
+		
+		// Tile Buttons to draw later
+		for (int i = 0; i < 16; i++) 
+		{
+			Image tile = new Image("Editor/Tiles/Walkway/"+i+".gif");
+			ImageView  ivMenue = new ImageView();
+			ivMenue.setImage(tile);
+			tileBox.getChildren().add(ivMenue);
+		}
+		
+		generateGrid();
+	
+		/* Sort everything */
+		root.add(menuBar, 0, 0);
+		root.add(tileGrid, 0, 1);
+		root.add(rightBox, 1, 1);
+
+		return root;
+	}
+
+	private Object saveMap() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public void generateGrid()
+	{
+		/* Grid to the Left */
+		
+		// Images
+		gridTile0 = new Image("Editor/Tiles/placeholder.gif");
+		int cellNumber = 0;
+	
+		for (int y = 0; y < gridY; y++) //row
+		{		
+			for (int x = 0; x < gridX; x++) //column
+			{
+				ImageView iv = new ImageView();
+				iv.setImage(gridTile0);
+				tileGrid.add(iv,x,y);
+			}
+		}
+		
+		//Cells for Numbers
+		for (int y = 0; y < cellY; y++)
+		{
+			for (int x = 0; x < cellX; x++)
+			{
+				Label tmp = new Label(" "+cellNumber);
+				cellGrid.add(tmp, x, y);
+				gridCells[x][y] = cellNumber++;
+				
+			}
+		}
+
+	}
+
+}
