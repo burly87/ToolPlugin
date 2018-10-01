@@ -1,9 +1,0 @@
-package Editor;
-
-
-public class Tile {
-
-	private float x, y, width, height;
-	
-	
-}
