@@ -6,11 +6,8 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 
 public class View 
@@ -27,12 +24,21 @@ public class View
 	private Label menuTitle;
 	
 	//Grid
+	
+	int TILE_SIZE = 40;
+	private int W = 800;
+	private int H = 600;
+	
+	private int X_TILES = W / TILE_SIZE;
+	private int Y_TILES = H / TILE_SIZE;
+	
+	private Tile[][] grid2 = new Tile[X_TILES][Y_TILES];
 	private Image gridTile0;
-	//Grid Scaling
-	private int gridX = 30; // width of grid 
-	private int gridY = 20; // height of grid
-	//Grid Cells
-	public int gridCells[][] = new int[gridX][gridY];
+//	//Grid Scaling
+//	private int gridX = 30; // width of grid 
+//	private int gridY = 20; // height of grid
+//	//Grid Cells
+//	public int gridCells[][] = new int[gridX][gridY];
 	
 	public View() {
 	}
@@ -92,19 +98,17 @@ public class View
 		/* Grid to the Left */
 		// Images
 		gridTile0 = new Image("Editor/Tiles/placeholder.gif");
-		int cellNumber = 0;
 	
-		for (int y = 0; y < gridY; y++) //row
+		for (int y = 0; y < Y_TILES; y++) //row
 		{
-		
-			for (int x =0; x < gridX; x++) //column
+			for (int x =0; x < X_TILES; x++) //column
 			{
 //				Label tmp = new Label(""+cellNumber);
+				Tile tile = new Tile(x,y,gridTile0);
 				ImageView iv = new ImageView();
 				iv.setImage(gridTile0);
 				grid.add(iv,x,y);
-				
-				gridCells[x][y] = cellNumber++;
+				grid2[x][y] = tile;
 			}
 		}		
 

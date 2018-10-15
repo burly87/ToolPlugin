@@ -1,8 +1,0 @@
-package Editor;
-
-import com.sun.prism.Texture;
-
-public class Tile {
-
-	private float x, y, width, height;
-}
